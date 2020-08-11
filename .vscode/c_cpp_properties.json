@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:/MySofts/WorkSofts/DevCpp/MinGW64/include/**",
+                "C:/MySofts/WorkSofts/DevCpp/MinGW64/lib/**"
             ],
             "defines": [
                 "_DEBUG",
