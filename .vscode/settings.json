@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "random": "cpp",
+        "functional": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp"
+    },
+    "c-cpp-compile-run.cpp-flags": "-Wall -Wextra -std=c++11"
+}
