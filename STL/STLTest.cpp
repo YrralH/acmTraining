@@ -11,22 +11,26 @@ using namespace std;
 
 void printDebugStage(int i);
 template<typename T>void showQueueStatus(queue<T> q);
+template<typename T>void showStackStatus(stack<T> s);
+bool pairCmp1(pair<int, int> x, pair<int, int> y);
+
 void testQueue();
 void testStack(); 
 void testRandomNumber();
 void testMultiType();
 
-void testPairWithPioryQueue();//TODO
-void testMap();//TODO
+void testPiorityQueueWithPair();//TODO
+void testMapWithPair();//TODO
 void testAlgorithm();//TODO
-template<typename T>void showStackStatus(stack<T> s);
+
 
 int main()
 {
     //testRandomNumber();
     //testQueue();
     //testStack();
-    testMultiType();
+    //testMultiType();
+    testPiorityQueueWithPair();
     
 
     return 0;
@@ -45,6 +49,7 @@ void testQueue()
 
     //func: empty, size
     printDebugStage(1);
+    //cannot visit q_int_demo1.front() before check it is not empty
     showQueueStatus<int>(q_int_demo1);
 
     //func: push
@@ -194,5 +199,20 @@ void testMultiType()
 
 
     cout << "-----test multi-type end-----" << endl;
+    return;
+}
+
+bool pairCmp1(pair<int, int> x, pair<int, int> y)
+{
+    return (x.first != y.first) ? (x.first > y.first) : (x.second > y.second);
+}
+
+void testPiorityQueueWithPair()
+{
+    cout << "-----test piority queue with pair:-----";
+    priority_queue<pair<int, int>> pq_demo1 (pairCmp1);
+
+
+    cout << "-----test piority queue with pair end-----";
     return;
 }
