@@ -5,5 +5,6 @@
         "ostream": "cpp",
         "iostream": "cpp"
     },
-    "c-cpp-compile-run.cpp-flags": "-Wall -Wextra -std=c++11"
+    "c-cpp-compile-run.cpp-flags": "-Wall -Wextra -std=c++11",
+    "files.eol": "\r\n"
 }
