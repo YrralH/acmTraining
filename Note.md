@@ -11,7 +11,9 @@
 		- [pair and piority queue](#pair-and-piority-queue)
 		- [pair and map](#pair-and-map)
 		- [algorithm](#algorithm)
-	- [Random Number](#random-number)
+	- [随机数Random Number](#随机数random-number)
+	- [数论相关](#数论相关)
+		- [最大公约数GCD](#最大公约数gcd)
 
 <!-- /TOC -->
 
@@ -112,9 +114,12 @@ q_int_demo1.pop();
 TODO 自定义比较函数    
 > 使用：push(a) pop() top() empty() size()
 ### pair and map
+TODO：map and hashmap
 ### algorithm
+TODO：sort 全排列
 
-## Random Number
+## 随机数Random Number
+两种
 > 1-32xxx的凑合随机数
 >``` c++
 >#include<ctime>
@@ -131,4 +136,23 @@ TODO 自定义比较函数
 >    mt19937 mt(time(0));
 >    auto mt_random_real = bind(uniform_real_distribution<double>(0, 1), mt);
 >    auto mt_random_int = bind(uniform_int_distribution<int>(0, 100000), mt);
-```
+> ```  
+
+## 数论相关
+### 最大公约数GCD
+可用库
+> ```c++
+> #include<algorithm>
+> int gcd = __gcd<int>(N, M);
+> //显然最小公倍数
+> int lcm = N * M / gcd;
+> ```
+若不用库当然辗转相除即可。  
+不 可 维 护 辗 转 相 除 ↓ 
+> ```c++
+> int gcd1(int a,int b)
+> {
+> 	while(b ^= a ^= b ^= a %= b);
+> 	return a;
+> }
+> ```
