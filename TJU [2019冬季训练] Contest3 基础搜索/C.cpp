@@ -6,6 +6,7 @@ using namespace std;
 
 int main_solver(int N, int M);
 int BFS(int n, int m);
+int gcd1(int a,int b);
 
 int main()
 {
@@ -33,10 +34,20 @@ int main()
     return 0;
 }
 
+int gcd1(int a,int b)
+{
+	while(b ^= a ^= b ^= a %= b); 	
+    return a;
+}
+
 int main_solver(int N, int M)
 {
     int ans;
-    int gcd = __gcd<int>(N, M);
+    int gcd;
+
+    gcd = gcd1(N, M);
+    gcd = __gcd<int>(N, M);
+    
     int n;
     int m;
     int s;
