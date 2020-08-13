@@ -46,8 +46,8 @@ int main_solver(int N, int M)
     int gcd;
 
     gcd = gcd1(N, M);
-    gcd = __gcd<int>(N, M);
-    
+    //gcd = __gcd<int>(N, M);
+
     int n;
     int m;
     int s;
