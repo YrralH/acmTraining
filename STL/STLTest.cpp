@@ -23,6 +23,19 @@ void testPiorityQueueWithPair();//TODO
 void testMapWithPair();//TODO
 void testAlgorithm();//TODO
 
+typedef struct MYNODE{
+    int value1;
+    int value2;
+    MYNODE(int arg1, int arg2){
+        value1 = arg1;
+        value2 = arg2;
+    }
+    bool operator < (struct MYNODE& B) const
+    {
+        return (value1 != B.value1) ? (value1 > B.value1) : (value2 > B.value2);
+    }
+}MyNode;
+
 
 int main()
 {
@@ -210,7 +223,7 @@ bool pairCmp1(pair<int, int> x, pair<int, int> y)
 void testPiorityQueueWithPair()
 {
     cout << "-----test piority queue with pair:-----";
-    priority_queue<pair<int, int>> pq_demo1 (pairCmp1);
+    priority_queue<pair<int, int>> pq_demo1;
 
 
     cout << "-----test piority queue with pair end-----";
