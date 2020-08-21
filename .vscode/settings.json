@@ -3,7 +3,18 @@
         "random": "cpp",
         "functional": "cpp",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp"
     },
     "c-cpp-compile-run.cpp-flags": "-Wall -Wextra -std=c++11",
     "files.eol": "\r\n"
