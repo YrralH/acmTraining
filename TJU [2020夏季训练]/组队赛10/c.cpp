@@ -100,6 +100,6 @@ int main()
     int res = bias + max_dist + 1;
     cout << res << endl;
 	
-	//delete[] Pa;
+	delete[] Pa;
     return 0;
 }

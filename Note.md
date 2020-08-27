@@ -2,20 +2,25 @@
 <!-- TOC -->
 
 - [基础搜索](#基础搜索)
-    - [递归写DFS](#递归写dfs)
-    - [队列与BFS](#队列与bfs)
+	- [递归写DFS](#递归写dfs)
+	- [队列与BFS](#队列与bfs)
 - [附加](#附加)
-    - [常用STL库](#常用stl库)
-        - [queue](#queue)
-        - [stack](#stack)
-        - [pair and piority queue](#pair-and-piority-queue)
-        - [pair and map](#pair-and-map)
-        - [algorithm](#algorithm)
-    - [随机数Random Number](#随机数random-number)
-    - [数论相关](#数论相关)
-        - [最大公约数GCD](#最大公约数gcd)
+	- [常用STL库](#常用stl库)
+		- [queue](#queue)
+		- [stack](#stack)
+		- [pair and piority queue](#pair-and-piority-queue)
+		- [pair and map](#pair-and-map)
+		- [迭代器](#迭代器)
+		- [set](#set)
+		- [algorithm](#algorithm)
+	- [随机数Random Number](#随机数random-number)
+	- [数论相关](#数论相关)
+		- [最大公约数GCD](#最大公约数gcd)
+	- [最短路/最小生成树](#最短路最小生成树)
+		- [Dijkstra](#dijkstra)
+	- [Floyd](#floyd)
 - [心态崩了预案](#心态崩了预案)
-    - [错误记录](#错误记录)
+	- [错误记录](#错误记录)
 
 <!-- /TOC -->
 
@@ -163,6 +168,51 @@ TODO：sort 全排列
 > 	return a;
 > }
 > ```
+
+## 最短路/最小生成树
+### Dijkstra
+思路就是每次都把```集合外且Dist最小者```(Dist即到src的距离加进来，并```松弛```。  
+  
+直接写就是```o(n^2)```  
+> 注意初始化
+> 如果这样初始化，注意这个if
+> ```c++
+>     for(vei it = e[src].begin(); it != e[src].end(); it++)
+>    {
+>        if((*it).cost < dist[(*it).to])
+>        //attention to this "if"
+>        {
+>            dist[(*it).to] = (*it).cost;
+>        }
+>    }
+>    ifInSet[src] = true;
+>    dist[src] = 0;
+> ```
+> 当然还不如就这样初始化  
+> ```c++
+> dist[src] = 0;
+> ```
+> 因为这样第一个加入的点就是src点，就和后续是一样的。所以是理解不透（想思路的时候想这样初始化）妨碍效率高效。  
+> 
+不过可能还需习得n(nlogn)版本的  
+> 当然是堆优化，最简单就是用优先队列  
+> TODO
+> 另外还有FQ的邪术
+> TODO
+
+
+## Floyd
+
+> ```c++
+> for (int k=1;k<=n;k++)
+> for (int i=1;i<=n;i++)
+> for (int j=1;j<=n;j++)
+> if (a[i][k]+a[k][j]<a[i][j])
+>		a[i][j] = a[i][k]+a[k][j];
+> ```
+
+
+
 
 # 心态崩了预案
 比较复杂的模拟题，如迷宫，回合制，可以自己造点（比较特殊的）样例。
