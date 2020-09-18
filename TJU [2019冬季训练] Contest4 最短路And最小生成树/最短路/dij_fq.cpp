@@ -7,7 +7,15 @@
 #include"string.h"
 
 const int N=1e4+5,M=5e5+5,inf=2147483647;
-struct edge{int v,nxt,w;}e[M];
+struct edge{
+    int v,nxt,w;
+    edge(int _v, int _nxt, int _w)
+    {
+        v = _v;
+        nxt = _nxt;
+        w = _w;
+    }
+}e[M];
 int h[N],cnt,n,m,s,d,dis[N],t[N<<1];
 
 void printDebugStage(int i)
@@ -16,7 +24,7 @@ void printDebugStage(int i)
 }
 
 void ins(int u,int v,int w){
-    e[++cnt]=(edge){v,h[u],w};
+    e[++cnt]=edge(v,h[u],w);
     h[u]=cnt;
 }//加边 
 

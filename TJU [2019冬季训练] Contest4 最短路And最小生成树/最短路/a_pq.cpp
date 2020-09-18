@@ -10,6 +10,7 @@
 using namespace std;
 
 #define Vei vector<Edge>::iterator
+#define Pii pair<int, int>
 
 typedef struct EDGE{
     int to;
@@ -18,10 +19,6 @@ typedef struct EDGE{
     {
         to = _to;
         cost = _cost;
-    }
-    friend bool operator < (const struct EDGE a, const struct EDGE b)
-    {
-        return a.cost > b.cost;
     }
 }Edge;
 
@@ -77,8 +74,9 @@ int solve_dij(vector<Edge> e[], const int S, int src, int dest)
 {
     int ans;
     int const inf = 0x3f3f3f3f;
-    int dist[S];//dist from src
-    bool ifInSet[S];
+    //dist from src
+    int* dist = new int[S];
+    bool* ifInSet = new bool[S];
     
     //-----init-----
     for(int i = 0; i < S; i++)
@@ -157,7 +155,8 @@ int solve_dij(vector<Edge> e[], const int S, int src, int dest)
         ans = -1;
     }
 
-    
+    delete[] dist;
+    delete[] ifInSet;
 
     return ans;
 }
@@ -167,11 +166,12 @@ int solve_dij_priority_queue(vector<Edge> e[], const int S, int src, int dest)
 {
     int ans;
     int const inf = 0x3f3f3f3f;
-    int dist[S];//dist from src
-    bool ifInSet[S];
+    //dist from src
+    int* dist = new int[S];
+    bool* ifInSet = new bool[S];
 
 
-    priority_queue<Edge, vector<Edge>> pq;
+    priority_queue<Pii, vector<Pii>, greater<Pii>> pq;
     //first: cost
     //second: to
     
@@ -183,7 +183,7 @@ int solve_dij_priority_queue(vector<Edge> e[], const int S, int src, int dest)
     }
 
     dist[src] = 0;
-    pq.push(EDGE(src, 0));
+    pq.push(make_pair(0, src));
 
     
     //-----init-end-----
@@ -193,8 +193,8 @@ int solve_dij_priority_queue(vector<Edge> e[], const int S, int src, int dest)
     int present_distance;
     while(!pq.empty())
     {
-        present_distance = pq.top().cost;
-        present_index = pq.top().to;
+        present_distance = pq.top().first;
+        present_index = pq.top().second;
         pq.pop();
 
         //debug
@@ -227,7 +227,7 @@ int solve_dij_priority_queue(vector<Edge> e[], const int S, int src, int dest)
             if(tmp_new_dist < dist[tmp_dest])
             {
                 dist[tmp_dest] = tmp_new_dist;
-                pq.push(EDGE(tmp_dest, tmp_new_dist));
+                pq.push(make_pair(tmp_new_dist, tmp_dest));
             }
         }
 
@@ -240,7 +240,8 @@ int solve_dij_priority_queue(vector<Edge> e[], const int S, int src, int dest)
         ans = -1;
     }
 
-    
+    delete[] dist;
+    delete[] ifInSet;
 
     return ans;
 }

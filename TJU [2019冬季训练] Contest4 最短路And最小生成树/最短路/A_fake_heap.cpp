@@ -66,8 +66,9 @@ int solve_dij_fake_heap(vector<Edge> e[], const int S, int src, int dest)
 {
     int ans;
     int const inf = 0x3f3f3f3f;
-    int dist[S];//dist from src
-    bool ifInSet[S];
+
+    int* dist = new int[S];
+    bool* ifInSet = new bool[S];
     
     //-----init-----
     for(int i = 0; i < S; i++)
@@ -133,6 +134,8 @@ int solve_dij_fake_heap(vector<Edge> e[], const int S, int src, int dest)
     else
         ans = -1;
 
+    delete[] dist;
+    delete[] ifInSet;
 
     return ans;
 }
